@@ -15,18 +15,20 @@ class LoginScreen extends GetView<AuthController> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: Get.width/12),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 12),
             child: Column(children: [
-              SizedBox(height:50,),
+              SizedBox(height: 50,),
               Container(
-                width: Get.width/2.5,
+                width: Get.width / 2.5,
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: AppColor.white,
-                  borderRadius: BorderRadius.all(Radius.circular(Get.width/2)),
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(Get.width / 2)),
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(Get.width/2)),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(Get.width / 2)),
                     child: Image.asset(AppImages.logo2)),
               ),
               SizedBox(height: 20,),
@@ -39,37 +41,44 @@ class LoginScreen extends GetView<AuthController> {
                     hintText: 'Enter Username/UserID',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    errorText: controller.validateId.value ? "Please enter user id" : null),
+                    errorText: controller.validateId.value
+                        ? "Please enter user id"
+                        : null),
               ),
               SizedBox(
                 height: 20,
               ),
-              TextField(
-                controller: controller.passwordIDTextController,
-                obscureText: !controller.passwordVisible.value,
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.key),
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: 'Enter Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    errorText:
-                        controller.validatePass.value ? "Please enter your passsword" : null,
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        controller.passwordVisible.value
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: Theme.of(context).primaryColorDark,
-                      ),
-                      onPressed: () {
-
-                        controller.passwordVisible.value = !controller.passwordVisible.value;
-
-                      },
-                    )),
-              ),
+              Obx(() {
+                return TextField(
+                  controller: controller.passwordIDTextController,
+                  obscureText: !controller.passwordVisible.value,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.key),
+                      fillColor: Colors.grey.shade100,
+                      filled: true,
+                      hintText: 'Enter Password',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      errorText:
+                      controller.validatePass.value
+                          ? "Please enter your passsword"
+                          : null,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          controller.passwordVisible.value
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Theme
+                              .of(context)
+                              .primaryColorDark,
+                        ),
+                        onPressed: () {
+                          controller.passwordVisible.value =
+                          !controller.passwordVisible.value;
+                        },
+                      )),
+                );
+              }),
               SizedBox(
                 height: 30,
               ),
