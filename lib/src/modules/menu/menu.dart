@@ -1,38 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:my_first_flutter_app/login.dart';
-import 'package:my_first_flutter_app/provider.dart';
+import 'package:my_first_flutter_app/src/core/utils/utils.dart';
+import 'package:my_first_flutter_app/src/core/values/app_strings.dart';
+import 'package:my_first_flutter_app/src/modules/auth/controller/auth_controller.dart';
+import 'package:my_first_flutter_app/src/modules/home/pages/home_screen.dart';
 
-import 'Controller/synccontroller.dart';
 
-class MenuView extends StatefulWidget {
-  const MenuView({super.key});
-
-  @override
-  State<MenuView> createState() => _MenuViewState();
-}
-
-class _MenuViewState extends State<MenuView> {
-
-  final SyncController usercontroller = Get.put(SyncController());
-
-  ShowToast(Text) {
-    Fluttertoast.showToast(
-        msg: Text,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.blue, // Color(0xff4c505b),
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
+class MenuView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Menu"),
+        title: Text("${AppStrings.menuText}"),
         leading: Icon(Icons.menu),
       ),
       body: Column(
@@ -58,7 +38,7 @@ class _MenuViewState extends State<MenuView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  usercontroller.employeename,
+                                  controller.employeeName,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
@@ -69,7 +49,7 @@ class _MenuViewState extends State<MenuView> {
                                   width: 10,
                                 ),
                                 Text(
-                                  usercontroller.designation,
+                                  controller.designation,
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromARGB(255, 41, 41, 41),
@@ -79,7 +59,7 @@ class _MenuViewState extends State<MenuView> {
                                   width: 10,
                                 ),
                                 Text(
-                                  usercontroller.orgname,
+                                  controller.orgName,
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Color.fromARGB(255, 41, 41, 41),
@@ -109,11 +89,11 @@ class _MenuViewState extends State<MenuView> {
                       margin: EdgeInsets.all(30),
                       child: InkWell(
                         onTap: () {
-                          ShowToast("Sync With ERP");
+                          Utils.ShowToast("Sync With ERP");
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => providertest()));
+                                  builder: (context) => HomeScreen()));
                         },
                         splashColor: Color.fromARGB(255, 182, 209, 255),
                         child: Center(
@@ -141,7 +121,7 @@ class _MenuViewState extends State<MenuView> {
                       margin: EdgeInsets.all(30),
                       child: InkWell(
                         onTap: () {
-                          ShowToast("Chemist");
+                          Utils.ShowToast("Chemist");
                         },
                         splashColor: Color.fromARGB(255, 182, 209, 255),
                         child: Center(
@@ -169,7 +149,7 @@ class _MenuViewState extends State<MenuView> {
                       margin: EdgeInsets.all(30),
                       child: InkWell(
                         onTap: () {
-                          ShowToast("Doctors");
+                          Utils.ShowToast("Doctors");
                         },
                         splashColor: Color.fromARGB(255, 182, 209, 255),
                         child: Center(
@@ -197,7 +177,7 @@ class _MenuViewState extends State<MenuView> {
                       margin: EdgeInsets.all(30),
                       child: InkWell(
                         onTap: () {
-                          ShowToast("Products");
+                          Utils.ShowToast("Products");
                         },
                         splashColor: Color.fromARGB(255, 182, 209, 255),
                         child: Center(
@@ -225,7 +205,7 @@ class _MenuViewState extends State<MenuView> {
                       margin: EdgeInsets.all(30),
                       child: InkWell(
                         onTap: () {
-                          ShowToast("Order list");
+                          Utils.ShowToast("Order list");
                         },
                         splashColor: Color.fromARGB(255, 182, 209, 255),
                         child: Center(

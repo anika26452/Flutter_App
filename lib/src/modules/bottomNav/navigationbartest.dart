@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_flutter_app/login.dart';
-import 'package:my_first_flutter_app/menu.dart';
+import 'package:my_first_flutter_app/src/modules/auth/login/login.dart';
+import 'package:my_first_flutter_app/src/modules/menu/menu.dart';
 
 class Navigat extends StatefulWidget {
   const Navigat({super.key});
@@ -13,7 +13,7 @@ class _NavigatState extends State<Navigat> {
   var _currentindex = 0;
   final pages = [
     MenuView(),
-    MyLogin(),
+    LoginScreen(),
   ];
   
   @override
